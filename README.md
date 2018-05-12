@@ -32,7 +32,7 @@ This is a [Memcached](http://memcached.org/) module for [Nest](https://github.co
 ## Installation
 
 ```bash
-$ npm i --save @nestjs/memcached memcached
+$ npm i --save nest-memcached memcached
 ```
 
 ## Quick Start
@@ -41,7 +41,7 @@ $ npm i --save @nestjs/memcached memcached
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { MemcachedModule } from '@nestjs/memcached';
+import { MemcachedModule } from 'nest-memcached';
 
 @Module({
   imports: [MemcachedModule.forRoot([ '192.168.0.102:11211', '192.168.0.103:11211', '192.168.0.104:11211' ], {retries: 3})],
@@ -53,7 +53,7 @@ export class ApplicationModule {}
 
 ```typescript
 import { Component } from '@nestjs/common';
-import { InjectMemcachedClient, Memcached } from '@nestjs/memcached';
+import { InjectMemcachedClient, Memcached } from 'nest-memcached';
 
 @Component()
 export class CatsService {

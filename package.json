@@ -1,6 +1,6 @@
 {
-  "name": "@nestjs/memcached",
-  "version": "0.0.1",
+  "name": "nest-memcached",
+  "version": "0.0.2",
   "description": "Nest - modern, fast, powerful node.js web framework (@memcached)",
   "author": "Miaowing <i@zfeng.net>",
   "license": "MIT",
@@ -16,5 +16,17 @@
     "@types/mongoose": "^4.7.33",
     "@types/node": "^7.0.41",
     "ts-node": "^3.3.0"
-  }
+  },
+  "main": "lib/index.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miaowing/nest-memcached.git"
+  },
+  "bugs": {
+    "url": "https://github.com/miaowing/nest-memcached/issues"
+  },
+  "homepage": "https://github.com/miaowing/nest-memcached#readme"
 }

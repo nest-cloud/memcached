@@ -7,7 +7,7 @@ import {MemcachedOptions} from './memcached.options';
 export class MemcachedModule {
     static forRoot(
         uri: string[],
-        options: MemcachedOptions = new MemcachedOptions(),
+        options: MemcachedOptions,
     ): DynamicModule {
         const connectionProvider = {
             provide: 'MemcachedClient',

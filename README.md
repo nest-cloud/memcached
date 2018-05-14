@@ -56,7 +56,7 @@ import { Component } from '@nestjs/common';
 import { InjectMemcachedClient, Memcached } from 'nest-memcached';
 
 @Component()
-export class CatsService {
+export class TestService {
   constructor(@InjectMemcachedClient() private readonly memClient: Memcached) {}
 
   async addValue(key: string, value: string): void {

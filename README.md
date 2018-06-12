@@ -44,9 +44,33 @@ import { Module } from '@nestjs/common';
 import { MemcachedModule } from 'nest-memcached';
 
 @Module({
-  imports: [MemcachedModule.forRoot([ '192.168.0.102:11211', '192.168.0.103:11211', '192.168.0.104:11211' ], {retries: 3})],
+  imports: [MemcachedModule.init([ '192.168.0.102:11211', '192.168.0.103:11211', '192.168.0.104:11211' ], {retries: 3})],
 })
 export class ApplicationModule {}
+```
+
+If you use [nest-boot](https://github.com/miaowing/nest-boot) module.
+
+```typescript
+import { Module } from '@nestjs/common';
+import { MemcachedModule } from 'nest-memcached';
+import { BootModule } from 'nest-boot';
+
+@Module({
+  imports: [
+      BootModule.forRoot(__dirname, 'bootstrap.yml'),
+      MemcachedModule.initWithBoot({path: 'memcached'})
+  ],
+})
+export class ApplicationModule {}
+```
+
+##### bootstrap.yml
+
+```yaml
+memcached:
+  uri: ['192.168.0.102:11211', '192.168.0.103:11211', '192.168.0.104:11211'],
+  retries: 3
 ```
 
 #### Memcached Client Injection

@@ -1,4 +1,4 @@
-export interface MemcachedOptions {
+export interface Options {
     /**
      * maxKeySize: 250, the maximum key size allowed.
      */
@@ -68,4 +68,8 @@ export interface MemcachedOptions {
      * idle: 5000, the idle timeout for the connections.
      */
     idle: number;
+}
+
+export interface BootOptions {
+    path: string;
 }

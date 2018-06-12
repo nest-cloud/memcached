@@ -1,10 +1,10 @@
 import * as MemcachedClient from 'memcached';
-import {MemcachedOptions} from './memcached.options';
+import {Options} from './memcached.options';
 
 export class Memcached {
     private client: MemcachedClient;
 
-    constructor(uri: string[] | object | string, options: MemcachedOptions) {
+    constructor(uri: string[] | object | string, options: Options) {
         this.client = new MemcachedClient(uri, options);
     }
 

@@ -73,3 +73,7 @@ export interface Options {
 export interface BootOptions {
     path: string;
 }
+
+export interface ConfigOptions {
+    path: string;
+}

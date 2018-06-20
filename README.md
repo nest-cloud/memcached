@@ -73,6 +73,30 @@ memcached:
   retries: 3
 ```
 
+If you use [nest-consul-config](https://github.com/miaowing/nest-consul-config) module.
+
+```typescript
+import { Module } from '@nestjs/common';
+import { MemcachedModule } from 'nest-memcached';
+import { BootModule } from 'nest-boot';
+
+@Module({
+  imports: [
+      BootModule.forRoot(__dirname, 'bootstrap.yml'),
+      MemcachedModule.initWithConfig({path: 'memcached'})
+  ],
+})
+export class ApplicationModule {}
+```
+
+##### config in consul kv
+
+```yaml
+memcached:
+  uri: ['192.168.0.102:11211', '192.168.0.103:11211', '192.168.0.104:11211'],
+  retries: 3
+```
+
 #### Memcached Client Injection
 
 ```typescript

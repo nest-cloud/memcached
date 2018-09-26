@@ -58,8 +58,8 @@ import { BootModule } from 'nest-boot';
 
 @Module({
   imports: [
-      BootModule.forRoot(__dirname, 'bootstrap.yml'),
-      MemcachedModule.initWithBoot({path: 'memcached'})
+      BootModule.register(__dirname, 'bootstrap.yml'),
+      MemcachedModule.registerByBoot({path: 'memcached'})
   ],
 })
 export class ApplicationModule {}
@@ -82,8 +82,8 @@ import { BootModule } from 'nest-boot';
 
 @Module({
   imports: [
-      BootModule.forRoot(__dirname, 'bootstrap.yml'),
-      MemcachedModule.initWithConfig({path: 'memcached'})
+      BootModule.register(__dirname, 'bootstrap.yml'),
+      MemcachedModule.registerByConsul({path: 'memcached'})
   ],
 })
 export class ApplicationModule {}

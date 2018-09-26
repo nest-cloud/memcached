@@ -1,5 +1,5 @@
 import * as MemcachedClient from 'memcached';
-import {Options} from './memcached.options';
+import { Options } from './memcached.options';
 
 export class Memcached {
     private client: MemcachedClient;

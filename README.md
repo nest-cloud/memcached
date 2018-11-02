@@ -44,7 +44,16 @@ import { Module } from '@nestjs/common';
 import { MemcachedModule } from 'nest-memcached';
 
 @Module({
-  imports: [MemcachedModule.init([ '192.168.0.102:11211', '192.168.0.103:11211', '192.168.0.104:11211' ], {retries: 3})],
+  imports: [
+      MemcachedModule.register({
+        uri: [
+           '192.168.0.102:11211',
+           '192.168.0.103:11211',
+           '192.168.0.104:11211'
+        ],
+        retries: 3
+      })
+  ],
 })
 export class ApplicationModule {}
 ```
@@ -54,12 +63,12 @@ If you use [nest-boot](https://github.com/miaowing/nest-boot) module.
 ```typescript
 import { Module } from '@nestjs/common';
 import { MemcachedModule } from 'nest-memcached';
-import { BootModule } from 'nest-boot';
+import { BootModule, BOOT_ADAPTER } from 'nest-boot';
 
 @Module({
   imports: [
       BootModule.register(__dirname, 'bootstrap.yml'),
-      MemcachedModule.registerByBoot({path: 'memcached'})
+      MemcachedModule.register({adapter: BOOT_ADAPTER})
   ],
 })
 export class ApplicationModule {}
@@ -78,12 +87,14 @@ If you use [nest-consul-config](https://github.com/miaowing/nest-consul-config) 
 ```typescript
 import { Module } from '@nestjs/common';
 import { MemcachedModule } from 'nest-memcached';
-import { BootModule } from 'nest-boot';
+import { ConsulModule, CONSUL_ADAPTER } from 'nest-consul';
+import { ConsulConfigModule } from 'nest-consul-config';
 
 @Module({
   imports: [
-      BootModule.register(__dirname, 'bootstrap.yml'),
-      MemcachedModule.registerByConsul({path: 'memcached'})
+      ConsulModule.register({/* ignore */}),
+      ConsulConfigModule.register({/* ignore */}),
+      MemcachedModule.register({adapter: CONSUL_ADAPTER})
   ],
 })
 export class ApplicationModule {}
@@ -124,7 +135,6 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## Stay in touch
 
 - Author - [Miaowing](https://github.com/miaowing)
-- Website - [https://nestjs.com](https://nestjs.com/)
 
 ## License
 

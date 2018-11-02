@@ -1,6 +1,6 @@
 {
   "name": "nest-memcached",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Nest - modern, fast, powerful node.js web framework (@memcached)",
   "author": "Miaowing <i@zfeng.net>",
   "license": "MIT",

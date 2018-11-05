@@ -3,7 +3,13 @@ import { Module, DynamicModule, Global } from '@nestjs/common';
 import { Options } from './memcached.options';
 import { Boot } from 'nest-boot';
 import { ConsulConfig } from "nest-consul-config";
-import { MEMCACHED_PROVIDER, BOOT_ADAPTER, CONSUL_ADAPTER } from "./constants";
+import {
+    MEMCACHED_PROVIDER,
+    BOOT_ADAPTER,
+    CONSUL_ADAPTER,
+    BOOTSTRAP_PROVIDER,
+    CONSUL_CONFIG_PROVIDER
+} from "./constants";
 
 @Global()
 @Module({})
@@ -11,9 +17,9 @@ export class MemcachedModule {
     static register(options: Options): DynamicModule {
         const inject = [];
         if (options.adapter === BOOT_ADAPTER) {
-            inject.push('BootstrapProvider');
+            inject.push(BOOTSTRAP_PROVIDER);
         } else if (options.adapter === CONSUL_ADAPTER) {
-            inject.push('ConsulConfigClient');
+            inject.push(CONSUL_CONFIG_PROVIDER);
         }
         const connectionProvider = {
             provide: MEMCACHED_PROVIDER,

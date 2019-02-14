@@ -1,4 +1,4 @@
 import { Inject } from '@nestjs/common';
-import { MEMCACHED_PROVIDER } from './constants';
+import { NEST_MEMCACHED_PROVIDER } from 'nest-common';
 
-export const InjectMemcachedClient = () => Inject('MEMCACHED_PROVIDER');
+export const InjectMemcachedClient = () => Inject(NEST_MEMCACHED_PROVIDER);

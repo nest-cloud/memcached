@@ -40,12 +40,13 @@ If you use [nest-boot](https://github.com/miaowing/nest-boot) module.
 ```typescript
 import { Module } from '@nestjs/common';
 import { MemcachedModule } from 'nest-memcached';
-import { BootModule, BOOT_ADAPTER } from 'nest-boot';
+import { BootModule } from 'nest-boot';
+import { NEST_BOOT } from 'nest-common';
 
 @Module({
   imports: [
       BootModule.register(__dirname, 'bootstrap.yml'),
-      MemcachedModule.register({adapter: BOOT_ADAPTER})
+      MemcachedModule.register({adapter: NEST_BOOT})
   ],
 })
 export class ApplicationModule {}
@@ -64,14 +65,15 @@ If you use [nest-consul-config](https://github.com/miaowing/nest-consul-config) 
 ```typescript
 import { Module } from '@nestjs/common';
 import { MemcachedModule } from 'nest-memcached';
-import { ConsulModule, CONSUL_ADAPTER } from 'nest-consul';
+import { ConsulModule } from 'nest-consul';
 import { ConsulConfigModule } from 'nest-consul-config';
+import { NEST_CONSUL_CONFIG } from 'nest-common';
 
 @Module({
   imports: [
       ConsulModule.register({/* ignore */}),
       ConsulConfigModule.register({/* ignore */}),
-      MemcachedModule.register({adapter: CONSUL_ADAPTER})
+      MemcachedModule.register({adapter: NEST_CONSUL_CONFIG})
   ],
 })
 export class ApplicationModule {}

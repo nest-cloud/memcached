@@ -4,29 +4,29 @@ import { Options } from './memcached.options';
 import { Boot } from 'nest-boot';
 import { ConsulConfig } from "nest-consul-config";
 import {
-    MEMCACHED_PROVIDER,
-    BOOT_ADAPTER,
-    CONSUL_ADAPTER,
-    BOOTSTRAP_PROVIDER,
-    CONSUL_CONFIG_PROVIDER
-} from "./constants";
+    NEST_MEMCACHED_PROVIDER,
+    NEST_BOOT,
+    NEST_CONSUL_CONFIG,
+    NEST_BOOT_PROVIDER,
+    NEST_CONSUL_CONFIG_PROVIDER
+} from "nest-common";
 
 @Global()
 @Module({})
 export class MemcachedModule {
     static register(options: Options): DynamicModule {
         const inject = [];
-        if (options.adapter === BOOT_ADAPTER) {
-            inject.push(BOOTSTRAP_PROVIDER);
-        } else if (options.adapter === CONSUL_ADAPTER) {
-            inject.push(CONSUL_CONFIG_PROVIDER);
+        if (options.adapter === NEST_BOOT) {
+            inject.push(NEST_BOOT_PROVIDER);
+        } else if (options.adapter === NEST_CONSUL_CONFIG) {
+            inject.push(NEST_CONSUL_CONFIG_PROVIDER);
         }
         const connectionProvider = {
-            provide: MEMCACHED_PROVIDER,
+            provide: NEST_MEMCACHED_PROVIDER,
             useFactory: async (config: Boot | ConsulConfig): Promise<Memcached> => {
-                if (options.adapter === BOOT_ADAPTER) {
+                if (options.adapter === NEST_BOOT) {
                     options = config.get('memcached');
-                } else if (options.adapter === CONSUL_ADAPTER) {
+                } else if (options.adapter === NEST_CONSUL_CONFIG) {
                     options = await config.get('memcached');
                 }
                 return await new Memcached(options.uri, options)

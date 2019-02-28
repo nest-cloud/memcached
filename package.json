@@ -24,10 +24,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/miaowing/nest-memcached.git"
+    "url": "git+https://github.com/nest-cloud/nest-memcached.git"
   },
   "bugs": {
-    "url": "https://github.com/miaowing/nest-memcached/issues"
+    "url": "https://github.com/nest-cloud/nest-memcached/issues"
   },
-  "homepage": "https://github.com/miaowing/nest-memcached#readme"
+  "homepage": "https://github.com/nest-cloud/nest-memcached#readme"
 }

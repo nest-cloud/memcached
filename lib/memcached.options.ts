@@ -1,6 +1,12 @@
 export interface Options {
+    /**
+     * Please use dependencies instead.
+     * @deprecated
+     */
     adapter?: string;
     
+    dependencies?: string[];
+
     uri?: string[];
     /**
      * maxKeySize: 250, the maximum key size allowed.

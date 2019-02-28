@@ -46,7 +46,7 @@ import { NEST_BOOT } from 'nest-common';
 @Module({
   imports: [
       BootModule.register(__dirname, 'bootstrap.yml'),
-      MemcachedModule.register({adapter: NEST_BOOT})
+      MemcachedModule.register({dependencies: [NEST_BOOT]})
   ],
 })
 export class ApplicationModule {}
@@ -73,7 +73,7 @@ import { NEST_CONSUL_CONFIG } from 'nest-common';
   imports: [
       ConsulModule.register({/* ignore */}),
       ConsulConfigModule.register({/* ignore */}),
-      MemcachedModule.register({adapter: NEST_CONSUL_CONFIG})
+      MemcachedModule.register({dependencies: [NEST_CONSUL_CONFIG]})
   ],
 })
 export class ApplicationModule {}
@@ -109,12 +109,12 @@ export class TestService {
 
 ## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://opencollective.com/nest).
+  NestCloud is an MIT-licensed open source project.
 
 ## Stay in touch
 
-- Author - [Miaowing](https://github.com/miaowing)
+- Author - [NestCloud](https://github.com/nest-cloud)
 
 ## License
 
-  Nest is [MIT licensed](LICENSE).
+  NestCloud is [MIT licensed](LICENSE).

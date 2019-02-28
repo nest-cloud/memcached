@@ -1,8 +1,8 @@
 {
   "name": "nest-memcached",
-  "version": "1.0.0",
-  "description": "Nest - modern, fast, powerful node.js web framework (@memcached)",
-  "author": "Miaowing <i@zfeng.net>",
+  "version": "1.0.1",
+  "description": "A memcached module for nest.js",
+  "author": "Miaowing <me@zf.ink>",
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.json"

@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@types/node": "^7.0.41",
-    "nest-boot": "^0.1.1",
+    "nest-boot": "^0.2.0",
     "nest-consul-config": "^1.0.0",
     "ts-node": "^3.3.0"
   },

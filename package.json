@@ -10,7 +10,7 @@
   "dependencies": {
     "@nestjs/common": "^4.5.0",
     "memcached": "git+https://github.com/miaowing/memcached.git",
-    "nest-common": "0.0.1",
+    "nest-common": "0.0.2",
     "typescript": "^2.4.2"
   },
   "devDependencies": {

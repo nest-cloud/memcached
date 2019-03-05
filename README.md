@@ -9,7 +9,7 @@ This is a [Memcached](http://memcached.org/) module for [Nest](https://github.co
 ## Installation
 
 ```bash
-$ npm i --save nest-memcached memcached
+$ npm i --save @nestcloud/memcached memcached
 ```
 
 ## Quick Start

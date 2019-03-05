@@ -1,10 +1,4 @@
 export interface Options {
-    /**
-     * Please use dependencies instead.
-     * @deprecated
-     */
-    adapter?: string;
-    
     dependencies?: string[];
 
     uri?: string[];

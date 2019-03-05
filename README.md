@@ -35,13 +35,13 @@ import { MemcachedModule } from '@nestcloud/memcached';
 export class ApplicationModule {}
 ```
 
-If you use [nest-boot](https://github.com/miaowing/nest-boot) module.
+If you use [@nestcloud/boot](https://github.com/nest-cloud/boot) module.
 
 ```typescript
 import { Module } from '@nestjs/common';
 import { MemcachedModule } from '@nestcloud/memcached';
-import { BootModule } from 'nest-boot';
-import { NEST_BOOT } from 'nest-common';
+import { BootModule } from '@nestcloud/boot';
+import { NEST_BOOT } from '@nestcloud/common';
 
 @Module({
   imports: [
@@ -60,14 +60,14 @@ memcached:
   retries: 3
 ```
 
-If you use [nest-consul-config](https://github.com/miaowing/nest-consul-config) module.
+If you use [@nestcloud/consul-config](https://github.com/nest-cloud/consul-config) module.
 
 ```typescript
 import { Module } from '@nestjs/common';
 import { MemcachedModule } from '@nestcloud/memcached';
-import { ConsulModule } from 'nest-consul';
-import { ConsulConfigModule } from 'nest-consul-config';
-import { NEST_CONSUL_CONFIG } from 'nest-common';
+import { ConsulModule } from '@nestcloud/consul';
+import { ConsulConfigModule } from '@nestcloud/consul-config';
+import { NEST_CONSUL_CONFIG } from '@nestcloud/common';
 
 @Module({
   imports: [

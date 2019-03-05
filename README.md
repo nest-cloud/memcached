@@ -18,7 +18,7 @@ $ npm i --save @nestcloud/memcached memcached
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { MemcachedModule } from 'nest-memcached';
+import { MemcachedModule } from '@nestcloud/memcached';
 
 @Module({
   imports: [
@@ -39,7 +39,7 @@ If you use [nest-boot](https://github.com/miaowing/nest-boot) module.
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { MemcachedModule } from 'nest-memcached';
+import { MemcachedModule } from '@nestcloud/memcached';
 import { BootModule } from 'nest-boot';
 import { NEST_BOOT } from 'nest-common';
 
@@ -64,7 +64,7 @@ If you use [nest-consul-config](https://github.com/miaowing/nest-consul-config) 
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { MemcachedModule } from 'nest-memcached';
+import { MemcachedModule } from '@nestcloud/memcached';
 import { ConsulModule } from 'nest-consul';
 import { ConsulConfigModule } from 'nest-consul-config';
 import { NEST_CONSUL_CONFIG } from 'nest-common';
@@ -91,7 +91,7 @@ memcached:
 
 ```typescript
 import { Component } from '@nestjs/common';
-import { InjectMemcachedClient, Memcached } from 'nest-memcached';
+import { InjectMemcachedClient, Memcached } from '@nestcloud/memcached';
 
 @Component()
 export class TestService {

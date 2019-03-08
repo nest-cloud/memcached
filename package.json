@@ -1,23 +1,29 @@
 {
   "name": "@nestcloud/memcached",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A memcached module for nest.js",
   "author": "Miaowing <me@zf.ink>",
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.json"
   },
+  "peerDependencies": {
+    "@nestcloud/common": "^0.1.1",
+    "@nestjs/common": "^4.5.0"
+  },
   "dependencies": {
-    "@nestjs/common": "^4.5.0",
-    "memcached": "^2.2.2",
-    "nest-common": "0.0.1",
-    "typescript": "^2.4.2"
+    "memcached": "^2.2.2"
   },
   "devDependencies": {
+    "@nestcloud/boot": "^0.1.1",
+    "@nestcloud/common": "^0.1.1",
+    "@nestcloud/consul-config": "^0.1.1",
+    "@nestjs/common": "^4.5.0",
     "@types/node": "^7.0.41",
     "nest-boot": "^0.1.1",
     "nest-consul-config": "^1.0.0",
-    "ts-node": "^3.3.0"
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2"
   },
   "directories": {
     "lib": "lib"

@@ -1,15 +1,15 @@
 import { Memcached } from './memcached.wrapper';
 import { Module, DynamicModule, Global } from '@nestjs/common';
 import { Options } from './memcached.options';
-import { Boot } from 'nest-boot';
-import { ConsulConfig } from "nest-consul-config";
+import { Boot } from '@nestcloud/boot';
+import { ConsulConfig } from "@nestcloud/consul-config";
 import {
     NEST_MEMCACHED_PROVIDER,
     NEST_BOOT,
     NEST_CONSUL_CONFIG,
     NEST_BOOT_PROVIDER,
     NEST_CONSUL_CONFIG_PROVIDER
-} from "nest-common";
+} from "@nestcloud/common";
 
 @Global()
 @Module({})
@@ -30,10 +30,10 @@ export class MemcachedModule {
             useFactory: async (config: Boot | ConsulConfig): Promise<Memcached> => {
                 if (options.dependencies) {
                     if (options.dependencies.includes(NEST_BOOT)) {
-                        options = config.get('memcached');
+                        options = (config as Boot).get('memcached');
                     }
                     if (options.dependencies.includes(NEST_CONSUL_CONFIG)) {
-                        options = await config.get('memcached');
+                        options = await (config as ConsulConfig).get('memcached');
                     }
                 }
                 return await new Memcached(options.uri, options)

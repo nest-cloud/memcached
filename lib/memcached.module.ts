@@ -14,27 +14,23 @@ import {
 @Global()
 @Module({})
 export class MemcachedModule {
-    static register(options: Options): DynamicModule {
+    static register(options: Options = {}): DynamicModule {
         const inject = [];
-        if (options.dependencies) {
-            if (options.dependencies.includes(NEST_BOOT)) {
-                inject.push(NEST_BOOT_PROVIDER);
-            }
-            if (options.dependencies.includes(NEST_CONSUL_CONFIG)) {
-                inject.push(NEST_CONSUL_CONFIG_PROVIDER)
-            }
+        if (options.dependencies.includes(NEST_BOOT)) {
+            inject.push(NEST_BOOT_PROVIDER);
+        }
+        if (options.dependencies.includes(NEST_CONSUL_CONFIG)) {
+            inject.push(NEST_CONSUL_CONFIG_PROVIDER)
         }
 
         const connectionProvider = {
             provide: NEST_MEMCACHED_PROVIDER,
             useFactory: async (config: Boot | ConsulConfig): Promise<Memcached> => {
-                if (options.dependencies) {
-                    if (options.dependencies.includes(NEST_BOOT)) {
-                        options = (config as Boot).get('memcached');
-                    }
-                    if (options.dependencies.includes(NEST_CONSUL_CONFIG)) {
-                        options = await (config as ConsulConfig).get('memcached');
-                    }
+                if (options.dependencies.includes(NEST_BOOT)) {
+                    options = (config as Boot).get('memcached', {});
+                }
+                if (options.dependencies.includes(NEST_CONSUL_CONFIG)) {
+                    options = await (config as ConsulConfig).get('memcached', {});
                 }
                 return await new Memcached(options.uri, options)
             },
@@ -42,7 +38,7 @@ export class MemcachedModule {
         };
         return {
             module: MemcachedModule,
-            components: [connectionProvider],
+            providers: [connectionProvider],
             exports: [connectionProvider],
         };
     }
